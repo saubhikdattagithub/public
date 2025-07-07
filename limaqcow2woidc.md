@@ -5,28 +5,32 @@
 
 - [Overview](#-overview)
 - [Steps](#-steps)
-- [Identification](#-identification)
-- [Solution](#-solution)
+
 
 ## 🧰 Overview 
 _This space describes the steps for setting up OIDC in GCP for creating uploading Qcow2 images and accessing it publicly_
 
 ## ✨ Steps
 
-- 1. Setting up OIDC for GCP
-- 2. 
-- 3. 
-- 4. 
+- Setting up OIDC for GCP
+  -  Create Workload-identity-pool
+  -  Create OIDC
+  -  Verify the created identity-pool and fetch the name
+  -  Create Service Account
+  -  Create Authorization binding for the Identity and Service Account
+  -  Add binding to the project 
 
 ## 🚀 Setting up OIDC for GCP
 
-'''
+- Create Workload-identity-pool
+```bash
 gcloud iam workload-identity-pools create "github-pool" \
   --location="global" \
   --display-name="GitHub Actions Pool"
-'''
+```
 
-'''
+- Create OIDC
+```bash
 gcloud iam workload-identity-pools providers create-oidc "github-provider" \
   --location="global" \
   --workload-identity-pool="github-pool" \
@@ -35,20 +39,56 @@ gcloud iam workload-identity-pools providers create-oidc "github-provider" \
   --attribute-mapping="google.subject=assertion.sub,attribute.actor=assertion.actor,attribute.repository=assertion.repository,attribute.repository_owner=assertion.repository_owner" \
   --attribute-condition="attribute.repository_owner == 'saubhikdattagithub'"
 
-![image](https://github.com/user-attachments/assets/29beb6f9-7c79-4214-864f-4458dcaeba03)
+Created workload identity pool provider [github-provider].
+```
 
-Created workload identity pool provider [github-provider].![image](https://github.com/user-attachments/assets/2310de16-bef8-4014-9d98-ccc015426293)
-'''
+- Verify the created identity-pool and fetch the name
+```bash
+ gcloud iam workload-identity-pools describe github-pool \
+  --location="global" \
+  --format="value(name)"
+projects/366393408502/locations/global/workloadIdentityPools/github-pool
+![image](https://github.com/user-attachments/assets/c188cfc7-77c0-4be1-86b6-e771125d576d)
+```
+
+- Create Service Account
+```bash
+gcloud iam service-accounts create gha-sa \
+  --display-name "GitHub Actions SA"
+Created service account [gha-sa].
+```
+
+- Create Authorization binding for the Identity and Service Account
+```bash
+gcloud iam service-accounts add-iam-policy-binding gha-sa@heidelberg-417321.iam.gserviceaccount.com \
+  --role roles/iam.workloadIdentityUser \
+  --member "principalSet://iam.googleapis.com/projects/366393408502/locations/global/workloadIdentityPools/github-pool/attribute.repository/saubhikdattagithub/mygardenimage"
+Updated IAM policy for serviceAccount [gha-sa@heidelberg-417321.iam.gserviceaccount.com].
+bindings:
+- members:
+  - principalSet://iam.googleapis.com/projects/366393408502/locations/global/workloadIdentityPools/github-pool/attribute.repository/saubhikdattagithub/mygardenimage
+  role: roles/iam.workloadIdentityUser
+etag: BwY5U-ZvZiI=
+version: 1
+```
+
+- Add binding to the project 
+```bash
+gcloud projects add-iam-policy-binding heidelberg-417321 \
+  --member="serviceAccount:gha-sa@heidelberg-417321.iam.gserviceaccount.com" \
+  --role="roles/storage.admin"
+Updated IAM policy for project [heidelberg-417321].
+bindings:
+- members:
+  - user:saubhikdatta@gmail.com
+  role: roles/owner
+- members:
+  - serviceAccount:gha-sa@heidelberg-417321.iam.gserviceaccount.com
+  - serviceAccount:poc-gardenlinux@heidelberg-417321.iam.gserviceaccount.com
+  role: roles/storage.admin
+etag: BwY5U-pBvKY=
+version: 1
+```
 
 
- * Image is built by forking the gardenlinux repo in github.tools.sap to keep the packages and proprietary information internal to SAP
-   - 
 
-## ⚙️ Solution
-
- *
-**Fix::** 
-   - https://github.com/gardenlinux/package-libxml2/pull/3
-   - https://github.com/gardenlinux/package-libxml2/commit/247c84c2966b99636d55e93cf8ddcf081ee3adf7
-   - The above would ideally now fix the libxml2 package build during Image creation
----
