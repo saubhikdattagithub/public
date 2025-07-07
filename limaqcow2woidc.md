@@ -90,5 +90,9 @@ etag: BwY5U-pBvKY=
 version: 1
 ```
 
+Enable IAM SA Cred API in GCloud
+<img width="1405" alt="image" src="https://github.com/user-attachments/assets/71dc1482-d891-46d2-b32a-74f0456e163b" />
+
+
 
 
