@@ -1,4 +1,11 @@
 <pre>
+
+root@gardenccloud-004:~# for jobs  in \ 
+  $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-full'); \ 
+  do echo "=========== Showing the content of $jobs" ; \ 
+  checkbox.checkbox-cli show $jobs ; \
+  done
+  
 =========== Showing the content of com.canonical.certification::executable
 origin: /snap/checkbox24/current/providers/checkbox-provider-resource/jobs/resource.pxu:128-135
 id: executable
@@ -1697,4 +1704,6 @@ command:
 ========
 =========== Showing the content of com.canonical.certification::usb3/storage-server
 ========
+
+```
 </pre>
