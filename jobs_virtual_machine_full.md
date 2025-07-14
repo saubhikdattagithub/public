@@ -1,6 +1,10 @@
 <pre>
 
-for jobs in $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::virtual-machine-full'); do echo "=========== Showing the content of $jobs" ; checkbox.checkbox-cli show $jobs ; echo ======== ; doneG
+for jobs in $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::virtual-machine-full'); \
+  do echo "=========== Showing the content of $jobs" ; \
+  checkbox.checkbox-cli show $jobs ; \
+  echo ======== ; \
+  done
 
 =========== Showing the content of com.canonical.certification::package
 origin: /snap/checkbox24/current/providers/checkbox-provider-resource/jobs/resource.pxu:109-117
