@@ -1,4 +1,3 @@
-'''
 <pre>
 root@gardenccloud-004:~# checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-full'
 $PROVIDERPATH is defined, so following provider sources are ignored ['/root/.local/share/plainbox-providers-1', '/var/tmp/checkbox-providers-develop']
