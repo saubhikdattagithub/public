@@ -1,3 +1,4 @@
+<pre>
 =========== Showing the content of com.canonical.certification::executable
 origin: /snap/checkbox24/current/providers/checkbox-provider-resource/jobs/resource.pxu:128-135
 id: executable
@@ -1696,3 +1697,4 @@ command:
 ========
 =========== Showing the content of com.canonical.certification::usb3/storage-server
 ========
+</pre>
