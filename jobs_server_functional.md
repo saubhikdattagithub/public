@@ -5,7 +5,7 @@ estimated_duration: 1.16
 plugin: resource
 category_id: information_gathering
 command:
-  # shellcheck disable=SC2016
+  #shellcheck disable=SC2016
   dpkg-query -W -f='name: ${Package}\nversion: ${Version}\n\n' || true
 _description: Generates a list of packages
 _summary: Collect information about installed software packages
