@@ -1,3 +1,4 @@
+<pre>
 =========== Showing the content of com.canonical.certification::package
 origin: /snap/checkbox24/current/providers/checkbox-provider-resource/jobs/resource.pxu:109-117
 id: package
@@ -1653,3 +1654,4 @@ command:
 ========
 =========== Showing the content of com.canonical.certification::usb3/storage-server
 ========
+</pre>
