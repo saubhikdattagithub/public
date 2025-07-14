@@ -1,7 +1,6 @@
 <pre>
 root@gardenccloud-004:~# checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-full'
-$PROVIDERPATH is defined, so following provider sources are ignored ['/root/.local/share/plainbox-providers-1', '/var/tmp/checkbox-providers-develop']
-warning: /snap/checkbox24/current/providers/checkbox-provider-base/units/suspend/suspend.pxu:657-673: job 'suspend/iperf_after_suspend_ether_auto_device1_eth0', field 'summary', please stay under 80 characters
+
 com.canonical.certification::executable
 com.canonical.certification::firmware/fwts_server
 com.canonical.certification::package
