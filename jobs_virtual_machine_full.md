@@ -1,4 +1,4 @@
-<pre>
+<pre lang="markdown">
 
 for jobs in $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::virtual-machine-full'); \
   do echo "=========== Showing the content of $jobs" ; \
