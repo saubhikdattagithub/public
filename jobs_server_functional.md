@@ -1,5 +1,5 @@
 <pre lang="markdown">
-```bash
+```ruby
 root@gardenccloud-004:~# for jobs  in \ 
   $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-functional'); \ 
   do echo "=========== Showing the content of $jobs" ; \ 
@@ -1493,11 +1493,6 @@ _summary:
 _description:
  This job provides detailed information about detected ethernet devices.
 
-========
-=========== Showing the content of com.canonical.certification::ethernet/ethertool_check_device1_eth0
-========
-=========== Showing the content of com.canonical.certification::ethernet/multi_iperf3_nic_device1_eth0
-========
 =========== Showing the content of com.canonical.certification::memory/info
 origin: /snap/checkbox24/current/providers/checkbox-provider-base/units/memory/jobs.pxu:1-11
 plugin: shell
@@ -1662,5 +1657,5 @@ command:
 ========
 =========== Showing the content of com.canonical.certification::usb3/storage-server
 ========
-    ```
+```
 </pre>
