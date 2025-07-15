@@ -1,5 +1,5 @@
 <pre lang="markdown">
-
+```ruby
 for jobs in $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::virtual-machine-full'); \
   do echo "=========== Showing the content of $jobs" ; \
   checkbox.checkbox-cli show $jobs ; \
@@ -1558,5 +1558,5 @@ _purpose: Test to see if we can sync local clock to an NTP server
 _summary: Test NTP server synchronization capability.
 
 ========
-
+```
 </pre>
