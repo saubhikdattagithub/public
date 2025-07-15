@@ -1,4 +1,4 @@
-<pre>
+<pre lang="markdown">
 
 root@gardenccloud-004:~# for jobs  in \ 
   $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-full'); \ 
