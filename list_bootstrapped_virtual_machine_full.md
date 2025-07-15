@@ -1,4 +1,4 @@
-<pre>
+<pre lang="markdown">
 
 root@gardenccloud-004:/snap/checkbox24/current/bin# checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::virtual-machine-full'
 
