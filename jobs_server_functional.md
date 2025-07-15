@@ -1,4 +1,5 @@
-<pre>
+<pre lang="markdown">
+```bash
 root@gardenccloud-004:~# for jobs  in \ 
   $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-functional'); \ 
   do echo "=========== Showing the content of $jobs" ; \ 
@@ -1661,4 +1662,5 @@ command:
 ========
 =========== Showing the content of com.canonical.certification::usb3/storage-server
 ========
+    ```
 </pre>
