@@ -1,5 +1,5 @@
 <pre lang="markdown">
-
+```ruby
 root@gardenccloud-004:~# for jobs  in \ 
   $(checkbox.checkbox-cli list-bootstrapped 'com.canonical.certification::server-full'); \ 
   do echo "=========== Showing the content of $jobs" ; \ 
