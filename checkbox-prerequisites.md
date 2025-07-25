@@ -1,6 +1,4 @@
 <pre>
-  
-
 cat <<EOF > /etc/apt/sources.list
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
@@ -12,9 +10,10 @@ deb http://security.debian.org/debian-security trixie-security main contrib non-
 deb-src http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
 EOF
 
-echo "export STRESS_NG_DISK_TIME=60s" >> /root/.profile
+echo "export STRESS_NG_DISK_TIME=60" >> /root/.profile
 echo "alias ll='ls -lrth'" >> /root/.profile
-echo "export STRESS_NG_CPU_TIME=60s" >> /root/.profile
+echo "export STRESS_NG_CPU_TIME=60" >> /root/.profile
+source ~/.profile
 
 
 echo "deb http://ftp.de.debian.org/debian trixie main " >> /etc/apt/sources.list
@@ -82,8 +81,15 @@ sudo apt install -y \
  xxd \
  bash-completion \
  libfile-fnmatch-perl \
+ iperf \
+ iperf3 \
  cpanminus
 sudo cpanm File::FnMatch
 
+snap install checkbox24
+snap install checkbox --channel 24.04/stable --classic
 snap install --beta --devmode fwts
+snap install checkbox-provider-tools --classic
+snap install checkbox-ce-oem --classic
+mkdir -p /var/log/installer && touch /var/log/installer/testingfile
 </pre>
