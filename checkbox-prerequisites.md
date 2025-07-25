@@ -1,4 +1,4 @@
-'''
+<pre>
   
 
 cat <<EOF > /etc/apt/sources.list
@@ -86,4 +86,4 @@ sudo apt install -y \
 sudo cpanm File::FnMatch
 
 snap install --beta --devmode fwts
-'''
+</pre>
