@@ -1,4 +1,6 @@
 <pre>
+
+
 cat <<EOF > /etc/apt/sources.list
 deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
@@ -83,6 +85,12 @@ sudo apt install -y \
  libfile-fnmatch-perl \
  iperf \
  iperf3 \
+ nmap \
+ python3-natsort \
+ lxc \
+ bc \
+ nmap \
+ ntpsec-ntpdate \
  cpanminus
 sudo cpanm File::FnMatch
 
@@ -92,4 +100,14 @@ snap install --beta --devmode fwts
 snap install checkbox-provider-tools --classic
 snap install checkbox-ce-oem --classic
 mkdir -p /var/log/installer && touch /var/log/installer/testingfile
+
+
+
+
+vim -u NONE -N
+debsums -s &/tmp/debsums-s && cat /tmp/debsums-s | awk '{print $6}' | sort -u > /tmp/debsums-packages
+for PKG in $(cat /tmp/debsums-packages); do apt install --reinstall $PKG --assume-no ; done 
+
+echo "kern.*   -/var/log/kern.log" >> /etc/rsyslog.conf && systemctl enable rsyslog --now
+
 </pre>
