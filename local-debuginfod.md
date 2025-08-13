@@ -5,10 +5,10 @@
 - [Overview](#-overview)
 - [Steps](#-steps)
 - [Outcome](#-outcome)
+- [debuginfod-server-intiate](#-debuginfod-server-intiate)
 
 ## 🧰 Overview 
 _This space provides the steps to run debuginfod locally for debug and debug-symbol files availability required for GNU Debugger (gdb). As per design, debuginfod indexes ELF binaries, debug files and source codes in pre-defined directory_
-
 
 ## 🚀 Steps
 
@@ -28,8 +28,7 @@ _This space provides the steps to run debuginfod locally for debug and debug-sym
 - Register the ENV variable to reach the debuginfod local server initiated above
   - ```export DEBUGINFO_URLS="http://localhost_IP:8802"```
   
-
-## ⚙️ Outcome
+## 🚀 Outcome
 
  * We should now be having our own debuginfod server and tools like gdb, perf etc should fetch debug information automatically
 
@@ -38,7 +37,7 @@ Eg:
 gdb /usr/bin/dpkg
 ```
 
-## ⚙️ Output of debuginfod server intiate:
+## 🚀 debuginfod-server-intiate
 ```
 (checkbox_venv) root@garden:~/checkbox/providers# debuginfod --port=8802 --verbose /srv/debug_data/
 [Tue Aug 12 16:44:30 2025] (30581/30581): warning: without -F -R -U -Z, ignoring PATHs
