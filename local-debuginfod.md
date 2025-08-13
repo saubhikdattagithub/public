@@ -38,8 +38,7 @@ Eg:
 gdb /usr/bin/dpkg
 ```
 
-## Output of debuginfod server start
-
+## ⚙️ Output of debuginfod server intiate:
 ```
 (checkbox_venv) root@garden:~/checkbox/providers# debuginfod --port=8802 --verbose /srv/debug_data/
 [Tue Aug 12 16:44:30 2025] (30581/30581): warning: without -F -R -U -Z, ignoring PATHs
