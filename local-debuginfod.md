@@ -30,7 +30,7 @@ _This space provides the steps to run debuginfod locally for debug and debug-sym
   
 ## 🚀 Outcome
 
- * We should now be having our own debuginfod server and tools like gdb, perf etc should fetch debug information automatically
+ * We should now be having our own debuginfod server and tools like gdb, perf etc should fetch debug information **locally**
 
 Eg:
 ```
