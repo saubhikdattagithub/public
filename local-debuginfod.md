@@ -22,7 +22,7 @@ _This space provides the steps to run debuginfod locally for debug and debug-sym
   - ```dpkg-deb -x "PACKAGE" /srv/debug_data```
   - This directory should now contain the debug and debug symbol files for the built packages which our local debuginfod server can fetch/obtain
 
-- Initiate debuginfod server
+- Initiate debuginfod server (Any free port)
   - ```debuginfod --port=8802 --verbose /srv/debug_data```
  
 - Register the ENV variable to reach the debuginfod local server initiated above
