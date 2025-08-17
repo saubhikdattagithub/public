@@ -91,6 +91,8 @@ sudo apt install -y \
  bc \
  nmap \
  ntpsec-ntpdate \
+ netcat-traditional \
+ w3m \
  cpanminus
 sudo cpanm File::FnMatch
 
@@ -109,5 +111,6 @@ debsums -s &/tmp/debsums-s && cat /tmp/debsums-s | awk '{print $6}' | sort -u > 
 for PKG in $(cat /tmp/debsums-packages); do apt install --reinstall $PKG --assume-no ; done 
 
 echo "kern.*   -/var/log/kern.log" >> /etc/rsyslog.conf && systemctl enable rsyslog --now
+
 
 </pre>
