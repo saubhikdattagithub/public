@@ -118,6 +118,7 @@ EOF
 }
 
 ### --- MAIN EXECUTION FLOW ---
+ask_provider
 configure_dns
 configure_sources
 install_packages
