@@ -2,6 +2,8 @@
 
 This script is like a **magic helper** 🪄 that takes the official Checkbox testing tool 🧰 and **reshapes it to include your own stuff**.
 
+Script for customised checkbox test suite for Garden Linux in CCloud --> [1877.gardenlinux.certification:ccloud](https://github.com/saubhikdattagithub/public/blob/main/generate_checkbox_env.sh)
+
 # 🔗 checkbox Official Guide:
 
  - [Official Document](https://canonical-checkbox.readthedocs-hosted.com/latest/)
