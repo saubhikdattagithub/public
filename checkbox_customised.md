@@ -2,6 +2,19 @@
 
 This script is like a **magic helper** 🪄 that takes the official Checkbox testing tool 🧰 and **reshapes it to include your own stuff**.
 
+# 🔗 checkbox Official Guide:
+
+[Official Document](https://canonical-checkbox.readthedocs-hosted.com/latest/)
+
+[Tutorial](https://canonical-checkbox.readthedocs-hosted.com/latest/tutorial/)
+
+# 📝 **_checkbox Components_**
+
+- namespace
+- provider
+- test plan
+- units, job and tests
+
 ---
 ## 🏗️ What it actually builds
 
@@ -26,7 +39,7 @@ This script is like a **magic helper** 🪄 that takes the official Checkbox tes
 ## 🧩 In plain English
 
 - Checkbox is the **toolbox** 🧰.  
-- Providers are **drawers inside the toolbox** 🗂️ (your drawer = `saubhik-provider`).  
+- Providers are **drawers inside the toolbox** 🗂️ (your drawer = `ccloud`).  
 - Test plans are **the shopping list** 📝 of which tools to use together (yours = `server-certification-full`).  
 - The script is the **handyman** 👷 who sets up the toolbox, installs your drawer, and fills it with your shopping list — all at once.  
 
