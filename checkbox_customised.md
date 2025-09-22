@@ -4,9 +4,11 @@ This script is like a **magic helper** 🪄 that takes the official Checkbox tes
 
 # 🔗 checkbox Official Guide:
 
-[Official Document](https://canonical-checkbox.readthedocs-hosted.com/latest/)
+ - [Official Document](https://canonical-checkbox.readthedocs-hosted.com/latest/)
 
-[Tutorial](https://canonical-checkbox.readthedocs-hosted.com/latest/tutorial/)
+ - [Tutorial](https://canonical-checkbox.readthedocs-hosted.com/latest/tutorial/)
+
+ - [How Tos](https://canonical-checkbox.readthedocs-hosted.com/latest/how-to/)
 
 # 📝 **_checkbox Components_**
 
