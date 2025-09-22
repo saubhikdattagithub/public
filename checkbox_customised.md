@@ -10,6 +10,8 @@ This script is like a **magic helper** 🪄 that takes the official Checkbox tes
 
  - [How Tos](https://canonical-checkbox.readthedocs-hosted.com/latest/how-to/)
 
+ - [Writing a custom test plan](https://canonical-checkbox.readthedocs-hosted.com/latest/tutorial/writing-tests/test-case/)
+
 # 📝 **_checkbox Components_**
 
 - namespace
