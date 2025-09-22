@@ -1,131 +1,44 @@
-# Checkbox Environment Generator
+# ⚙️ Checkbox Customisation (Made Simple)
 
-This repository contains a script called **`generate_checkbox_env.sh`**.  
-It is a one-shot setup wizard that builds a complete Checkbox environment for you, with your **own provider and test plan** already included.
-
----
-
-## What the script does (step by step, in plain English)
-
-1. **Makes a clean workspace**  
-   - Creates a folder structure just for Checkbox.  
-   - Keeps everything contained so your system stays untouched.
-
-2. **Builds a Python sandbox (virtual environment)**  
-   - Think of this like a “mini computer inside your computer” where Checkbox will run safely.  
-   - This way, it doesn’t mess with your system’s Python.
-
-3. **Downloads and installs Checkbox**  
-   - Pulls Checkbox directly from the source.  
-   - Installs all required Python packages inside the sandbox.  
-   - Makes sure the environment has everything Checkbox needs.
-
-4. **Adds your custom provider**  
-   - Registers the provider **`my-provider`** (from this repo).  
-   - A provider in Checkbox is like a “folder of tests” that belong together.  
-   - After running the script, Checkbox will recognize `my-provider` just like the built-in ones.
-
-5. **Adds your custom test plan**  
-   - Registers the test plan **`my-custom-plan`**.  
-   - A test plan is a collection of tests bundled together to run as a set.  
-   - This ensures your plan shows up in Checkbox menus.
-
-6. **Finishes with a ready-to-run Checkbox setup**  
-   - After the script ends, you can immediately run:  
-     ```bash
-     ./venv/bin/checkbox-cli
-     ```  
-   - Both your **`my-provider`** and **`my-custom-plan`** are already available.  
-   - No extra steps required.
+This script is like a **magic helper** 🪄 that takes the official Checkbox testing tool 🧰 and **reshapes it to include your own stuff**.
 
 ---
 
-## Why this is useful
+## 🏗️ What it actually builds
 
-Normally, you would need to do all of these by hand:  
+1. 🏠 **A private home for Checkbox**  
+   - Instead of messing with the system, it makes a **sandbox** 🏖️ where Checkbox lives.  
+   - Think of it like giving Checkbox its own apartment so it doesn’t fight with your system apps.  
 
-- Create folders  
-- Setup a Python virtual environment  
-- Download Checkbox source code  
-- Install all the dependencies  
-- Copy/link your provider and test plans into the right directories  
-- Fix file paths  
+2. 📦 **Your very own provider (`saubhik-provider`)**  
+   - A *provider* in Checkbox is just a **folder of tests** 📑.  
+   - The script plugs in your folder, so Checkbox now knows about **your tests** just like it knows about Canonical’s official ones.  
 
-That’s a lot of manual steps.  
+3. 📝 **Your custom test plan (`server-certification-full`)**  
+   - A *test plan* is like a **playlist of songs** 🎶 — except it’s a playlist of tests.  
+   - The script registers your playlist, so when you open Checkbox you see *your plan* ready to run ✅.  
 
-👉 With this script, you just run:
+4. 🔗 **Wires everything together**  
+   - It links Checkbox → `saubhik-provider` → `server-certification-full`.  
+   - So when Checkbox runs, it automatically offers your tests as if they were built-in.  
 
-```bash
-./generate_checkbox_env.sh
+---
 
+## 🧩 In plain English
 
-As discussed with Andre and Thomas, preliminary evaluation suggests, we can leverage "checkbox" to create our own tests in python venv environment
+- Checkbox is the **toolbox** 🧰.  
+- Providers are **drawers inside the toolbox** 🗂️ (your drawer = `saubhik-provider`).  
+- Test plans are **the shopping list** 📝 of which tools to use together (yours = `server-certification-full`).  
+- The script is the **handyman** 👷 who sets up the toolbox, installs your drawer, and fills it with your shopping list — all at once.  
 
-- checkbox provides various "test plan" to perform HW / OS / package / utility tests with submission possibility to canonical for HW / OS Certification
+---
 
-**_checkbox components_**
+## 🎉 End Result
 
-- namespace
-- provider
-- test plan
-- units, job and tests
+When the script finishes:  
+- Checkbox behaves like the normal official one ⚡  
+- But it also has **your own provider + test plan** baked in 🧩  
+- Meaning your tests look and feel **official**, not like an add-on 🚀  
 
-- pre-defined test suits are available for selection. however these tests run from a read-only squashfs filesystem, which snap:checkbox gets installed by default
-
-**_UI triggered by checkbox.checkbox-cli (via snap)_**
-<img width="1012" height="752" alt="Image" src="https://github.com/user-attachments/assets/0349620d-4eed-488e-ae9a-715a665b334c" />
-
-**_the above test selections are available via CLI too `(checkbox-cli list "test plan")`_**
-
-<img width="902" height="620" alt="Image" src="https://github.com/user-attachments/assets/ae55447c-693e-4bb5-a9cc-68bde0b0f011" />
-
-- we considered 3 "test plan" to suit ourselves for initial validations of Garden Linux
-  - sever-certification-full
-  - server-certification-functional
-  - virtual-machine-full
-
-**_- Units in each "test plan"_** 
-
-- https://github.com/saubhikdattagithub/public/blob/main/list_bootstrapped_server_full.md
-- https://github.com/saubhikdattagithub/public/blob/main/list_bootstrapped_server_functional.md
-- https://github.com/saubhikdattagithub/public/blob/main/list_bootstrapped_virtual_machine_full.md
-
-**_Difference of count of units/jobs among the 3 “test plan(s)”_** 
-
-https://github.com/saubhikdattagithub/public/blob/main/difference_test_plans.md
-Which command/script each of the unit runs in each "test plan”
-
-**_​🔜 What each job within the "test plan unit" does" / Which script it runs? --> the below links highlights them_** 
-
-- https://github.com/saubhikdattagithub/public/blob/main/jobs_server_full.md
-- https://github.com/saubhikdattagithub/public/blob/main/jobs_server_functional.md
-- https://github.com/saubhikdattagithub/public/blob/main/jobs_virtual_machine_full.md
-
-- However **caveat** of above test from snap:checkbox is that the tests 
-  - cannot be modified (read-only) 
-  - designed for Ubuntu in specific
-  
-- to have a custom set of tests (writeable) for our own purpose, a python venv based testing is possible, as next:
-  - create our own provider referring https://canonical-checkbox.readthedocs-hosted.com/en/stable/tutorial/writing-tests/test-case.html
-    - '2025.gardenlinux.certification:tutorial'
-    - 'tuesday.gardenlinux.cert:tut'  
-  - define the units and jobs
-  - modify the tests/scripts/checks with <CHECK>.pxu files
- 
-**_custom provider and units:_**
-<img width="1908" height="1392" alt="Image" src="https://github.com/user-attachments/assets/975838f0-45cf-4894-82a0-b470eac4a335" />
-
-
-**_pre-requisites for checkbox for ccloud - HW tests (to be baked in the image)_**
- - git clone https://github.com/gardenlinux/gardenlinux-ccloud
- - ./build azure-kvm-cisSysctl-nodejs-nvme-sssd_curl_dev_iso_pxe-amd64
-        > checkbox.checkbox-cli
-
-**_packages needed for test executions_** 
-  - fio
-  - stress-ng
-  - lshw
-  - more....
-
-
+---
 
