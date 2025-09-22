@@ -42,7 +42,7 @@ Script for customised checkbox test suite for Garden Linux in CCloud --> [1877.g
 
 ---
 
-## 🧩 In plain English
+## 🧩 Simply said
 
 - Checkbox is the **toolbox** 🧰.  
 - Providers are **drawers inside the toolbox** 🗂️ (your drawer = `ccloud`).  
