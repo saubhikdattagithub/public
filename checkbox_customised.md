@@ -3,7 +3,7 @@
 This script is like a **magic helper** 🪄 that takes the official Checkbox testing tool 🧰 and **reshapes it to include your own stuff**.
 
 ---
-
+## 📚 Table of Contents
 ## 🏗️ What it actually builds
 
 1. 🏠 **A private home for Checkbox**  
