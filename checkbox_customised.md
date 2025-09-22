@@ -60,3 +60,19 @@ When the script finishes:
 
 ---
 
+## 🎉 Screenshots
+
+<img width="1079" height="1251" alt="Image" src="https://github.com/user-attachments/assets/8e69417a-aab8-4185-99e3-4db199cc2bae" />
+
+<img width="1021" height="525" alt="Image" src="https://github.com/user-attachments/assets/d26d85fe-393f-4bbe-8acf-3e49ab7eacd1" />
+
+<img width="1281" height="878" alt="Image" src="https://github.com/user-attachments/assets/e2f3bf5a-2b68-417d-87b7-3c1815ad9f49" />
+
+<img width="1012" height="1236" alt="Image" src="https://github.com/user-attachments/assets/49aa87ec-c59f-4d87-881f-78d9e95aaa7b" />
+
+<img width="1437" height="1236" alt="Image" src="https://github.com/user-attachments/assets/d8ff7fbb-4721-4aee-a68b-dc7e41a4e3be" />
+
+<img width="1722" height="1163" alt="Image" src="https://github.com/user-attachments/assets/df22e62f-f232-47dd-99db-f48fc8f7b6a6" />
+
+<img width="1490" height="1154" alt="Image" src="https://github.com/user-attachments/assets/ca8bbc39-696c-432e-8a44-2206e9a48f84" />
+
