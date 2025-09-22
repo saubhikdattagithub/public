@@ -3,14 +3,13 @@
 This script is like a **magic helper** 🪄 that takes the official Checkbox testing tool 🧰 and **reshapes it to include your own stuff**.
 
 ---
-## 📚 Table of Contents
 ## 🏗️ What it actually builds
 
 1. 🏠 **A private home for Checkbox**  
    - Instead of messing with the system, it makes a **sandbox** 🏖️ where Checkbox lives.  
    - Think of it like giving Checkbox its own apartment so it doesn’t fight with your system apps.  
 
-2. 📦 **Your very own provider (`saubhik-provider`)**  
+2. 📦 **Your very own provider (`ccloud`)**  
    - A *provider* in Checkbox is just a **folder of tests** 📑.  
    - The script plugs in your folder, so Checkbox now knows about **your tests** just like it knows about Canonical’s official ones.  
 
@@ -19,7 +18,7 @@ This script is like a **magic helper** 🪄 that takes the official Checkbox tes
    - The script registers your playlist, so when you open Checkbox you see *your plan* ready to run ✅.  
 
 4. 🔗 **Wires everything together**  
-   - It links Checkbox → `saubhik-provider` → `server-certification-full`.  
+   - It links Checkbox → `ccloud` → `server-certification-full`.  
    - So when Checkbox runs, it automatically offers your tests as if they were built-in.  
 
 ---
