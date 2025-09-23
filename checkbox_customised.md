@@ -62,17 +62,25 @@ When the script finishes:
 
 ## 🎉 Screenshots
 
-<img width="1079" height="1251" alt="Image" src="https://github.com/user-attachments/assets/8e69417a-aab8-4185-99e3-4db199cc2bae" />
+<img width="1395" height="780" alt="image" src="https://github.com/user-attachments/assets/5bd419ec-7a2a-4adc-b6d2-54eabd88a5b4" />
 
-<img width="1021" height="525" alt="Image" src="https://github.com/user-attachments/assets/d26d85fe-393f-4bbe-8acf-3e49ab7eacd1" />
+<img width="1079" height="1251" alt="478970731-8e69417a-aab8-4185-99e3-4db199cc2bae" src="https://github.com/user-attachments/assets/029fce28-a29a-4f6a-ae13-0df3ac114d1d" />
 
-<img width="1281" height="878" alt="Image" src="https://github.com/user-attachments/assets/e2f3bf5a-2b68-417d-87b7-3c1815ad9f49" />
+<img width="1021" height="525" alt="478970803-d26d85fe-393f-4bbe-8acf-3e49ab7eacd1" src="https://github.com/user-attachments/assets/de9117b5-d5f1-4f3a-b013-e46f61693e2c" />
 
-<img width="1012" height="1236" alt="Image" src="https://github.com/user-attachments/assets/49aa87ec-c59f-4d87-881f-78d9e95aaa7b" />
+<img width="2562" height="1756" alt="image" src="https://github.com/user-attachments/assets/627d0fb2-d6f4-4bbf-b4f0-3e57d82a02c6" />
 
-<img width="1437" height="1236" alt="Image" src="https://github.com/user-attachments/assets/d8ff7fbb-4721-4aee-a68b-dc7e41a4e3be" />
+<img width="2024" height="2472" alt="image" src="https://github.com/user-attachments/assets/12b16c66-1940-4aae-9ac2-29b961679959" />
 
-<img width="1722" height="1163" alt="Image" src="https://github.com/user-attachments/assets/df22e62f-f232-47dd-99db-f48fc8f7b6a6" />
+<img width="2874" height="2472" alt="image" src="https://github.com/user-attachments/assets/4aba3b4f-212c-4d37-a64d-c390ab3b13f6" />
 
-<img width="1490" height="1154" alt="Image" src="https://github.com/user-attachments/assets/ca8bbc39-696c-432e-8a44-2206e9a48f84" />
+<img width="3444" height="2326" alt="image" src="https://github.com/user-attachments/assets/aa202da1-4b84-4403-a1fb-f6813dc13ea7" />
+
+<img width="2980" height="2308" alt="image" src="https://github.com/user-attachments/assets/276e756d-e6cd-45a9-90aa-ca48403345ae" />
+
+
+
+
+
+
 
