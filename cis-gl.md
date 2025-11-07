@@ -3,13 +3,19 @@
 This document describes our current **CIS Benchmark compliance** implementation based on the
 [`cis-hardening`](https://github.com/ovh/debian-cis) framework integrated under `/opt/cis-hardening/`.
 
-All tests are defined as configuration files in:
+ - All tests are defined as configuration files in:
 
 ```bash
 /opt/cis-hardening/etc/conf.d/
 ```
 
-Each test defines:
+ - On installation of the package `cis-hardening` within the Garden Linux repository, the configuration files are initiated as below during image creation:
+
+```bash
+/opt/cis-hardening/bin/hardening.sh --create-config-files-only --allow-unsupported-distribution
+```
+
+ - Each test defines:
 - `status=audit` → runs the check in audit mode (report only)
 - `status=enabled` → enforces the check actively
 - `status=disabled` → skipped intentionally (documented below)
@@ -25,7 +31,7 @@ cd /opt/cis-hardening
 ./bin/hardening.sh --audit-all | tee /tmp/cis_audit_summary.log
 
 # Review failed (KO) checks
-grep '\[ KO \]' /tmp/cis_audit_summary.log
+grep '\[ KO \]' /tmp/cis_audit_summary.log | grep -v "Check Failed"
 ```
 
 🚫 Disabled CIS Tests and Justifications
