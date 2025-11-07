@@ -28,7 +28,7 @@ A live compliance report could be generated at any time:
 
 ```bash
 cd /opt/cis-hardening
-./bin/hardening.sh --audit-all | tee /tmp/cis_audit_summary.log
+./bin/hardening.sh --audit | tee /tmp/cis_audit_summary.log
 
 # Review failed (KO) checks
 grep '\[ KO \]' /tmp/cis_audit_summary.log | grep -v "Check Failed"
@@ -107,3 +107,15 @@ All disabled tests would be periodically re-evaluated for future hardening relea
 Several functionality are replaced by modern equivalents (e.g., Tripwire → AIDE, syslog-ng → rsyslog)
 
 This README is intended for internal and audit documentation of CIS deviation rationale.
+
+🧾 Screenshots
+
+`./build kvm-cis_dev`
+<img width="954" height="241" alt="image" src="https://github.com/user-attachments/assets/168ade01-e886-4c5d-9059-9e1605e4605d" />
+
+`./bin/start-vm ./.build/kvm-cis_dev-arm64-today-local.raw`
+<img width="1521" height="348" alt="image" src="https://github.com/user-attachments/assets/188577db-4189-420b-a304-6a12a0380005" />
+
+`/opt/cis-hardening/bin/hardening.sh --audit --allow-unsupported-distribution | tee /tmp/cis_audit_summary.log`
+<img width="957" height="295" alt="image" src="https://github.com/user-attachments/assets/7fc1407a-b3d1-4624-a5e2-76066a1090fa" />
+
