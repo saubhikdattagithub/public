@@ -41,7 +41,6 @@ The following tests are disabled `(status=disabled)` due to platform design with
 |  **CIS ID**  | **Test File**                         | **Description**                     | **Explanation (Why Disabled)**                                                                  |
 | :----------: | ------------------------------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------- |
 |  **1.1.1.7** | restrict_fat.cfg                      | Disable FAT filesystem support      | Not applicable for cloud or virtualized images (no removable media).                            |
-|   **4.2.3**  | logs_permissions.cfg                  | Ensure log files permissions        | Handled by logrotate permissions.                                                               |
 |   **1.1.6**  | var_partition.cfg                     | Separate `/var` partition           | Unified filesystem model                                                                        |
 |  **1.1.6.1** | var_nodev.cfg                         | `/var` nodev option                 | Unified filesystem model                                                                        |
 |  **1.1.6.2** | var_nosuid.cfg                        | `/var` nosuid option                | Unified filesystem model                                                                        |
@@ -80,6 +79,7 @@ The following tests are disabled `(status=disabled)` due to platform design with
 |  **4.2.1.4** | syslog_ng_logfiles_perm.cfg           | syslog-ng log permissions           | Not applicable — rsyslog uses binary logs.                                                      |
 |  **4.2.1.5** | syslog-ng_remote_host.cfg             | syslog-ng remote logging            | Not applicable — rsyslog handles logging.                                                       |
 |  **4.2.1.6** | remote_syslog-ng_acl.cfg              | syslog-ng remote ACL                | Not applicable — rsyslog handles logging.                                                       |
+|   **4.2.3**  | logs_permissions.cfg                  | Ensure log files permissions        | Handled by logrotate permissions.                                                               |
 |   **5.1.1**  | enable_cron.cfg                       | Enable cron daemon                  | Replaced by systemd-timers.                                                                     |
 |   **3.3.9**  | disable_ipv6_router_advertisement.cfg | Disable IPv6 RA                     | IPv6 Router Advertisement enabled for managed subnets.                                          |
 |   **3.2.2**  | disable_ip_forwarding.cfg             | Disable IP forwarding               | Controlled via `sysctl.conf` centrally, not via script.                                         |
