@@ -62,6 +62,7 @@ The following tests are disabled `(status=disabled)` due to platform design with
 |  **1.1.15**  | run_shm_nodev.cfg                     | `/run/shm` nodev                    | `/run/shm` merged into `/dev/shm` with secure mount options.         |
 |  **1.1.17**  | run_shm_noexec.cfg                    | `/run/shm` noexec                   | `/dev/shm` tmp.mount removed noexec support long ago.                |
 |   **1.4.1**  | install_tripwire.cfg                  | Install Tripwire                    | Replaced by AIDE for integrity checking.                             |
+|   **1.3.3**  | logfile_sudo.cfg                      | /var/log/sudo.log in /etc/sudoers   | Not required/handled within GL.                                      |
 |   **1.4.2**  | tripwire_cron.cfg                     | Schedule Tripwire checks            | Replaced by `aide-check.timer`.                                      |
 |   **1.5.1**  | bootloader_ownership.cfg              | Ensure bootloader ownership         | Managed during image build process.                                  |
 |   **1.5.2**  | bootloader_password.cfg               | Require bootloader password         | Managed during image build process.                                  |
