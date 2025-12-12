@@ -86,6 +86,7 @@ configure_logging() {
 setup_checkbox_venv() {
     echo "==> Setting up Checkbox in venv..."
     git clone "$CHECKBOX_REPO" ~/checkbox
+    git checkout tags/v5.0.0 -b v5.0.0
 
     cd ~/checkbox/checkbox-support
     pip install -e .
