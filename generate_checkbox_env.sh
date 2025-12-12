@@ -85,13 +85,26 @@ configure_logging() {
 
 setup_checkbox_venv() {
     echo "==> Setting up Checkbox in venv..."
-    git clone "$CHECKBOX_REPO" ~/checkbox
-    git checkout tags/v5.0.0 -b v5.0.0
+    
 
-    cd ~/checkbox/checkbox-support
-    pip install -e .
-    cd ../providers/resource
-    python3 manage.py develop
+# first install python3 and python3-venv
+$ sudo apt install python3 python3-virtualenv python3-pip
+# clone the Checkbox repository
+git clone "$CHECKBOX_REPO" ~/checkbox
+git checkout tags/v5.0.0 -b v5.0.0
+
+cd checkbox/checkbox-ng
+./mk-venv ../../checkbox_venv
+# Activate the virtual environment
+. ../../checkbox_venv/bin/activate
+
+# Install checkbox_support, it is a collection of utility scripts used by
+# many tests
+(checkbox_venv) $ cd ../checkbox-support
+(checkbox_venv) $ pip install -e .
+# Install the resource provider, we will use it further along in this tutorial
+(checkbox_venv) $ cd ../providers/resource
+(checkbox_venv) $ python3 manage.py develop
 
     cd ~/checkbox/providers
     "$VENVDIR/bin/checkbox-cli" startprovider "$PROVIDER"
