@@ -132,6 +132,11 @@ EOF
     fi
 }
 
+execute_test() {
+    echo "==> Executing HW test Server Certification Full"
+    chkcli run -f html --non-interactive -o /home/1.html '1877.gardenlinux.certification::22.04-server-full'
+}
+
 ### --- MAIN EXECUTION FLOW ---
 ask_provider
 configure_dns
@@ -141,3 +146,4 @@ configure_profile
 configure_logging
 setup_checkbox_venv
 validate_install
+execute_test
