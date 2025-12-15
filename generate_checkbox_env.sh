@@ -6,6 +6,7 @@ echo -e "**Welcome to checkbox initiation**"
 echo -e "=================================="
 
 ### --- CONFIGURATION ---]
+rm -rf /root/checkbox_venv /root/checkbox
 : "${HOME:=/root}"
 DEBIAN_RELEASE="trixie"
 VENVDIR="$HOME/checkbox_venv"
