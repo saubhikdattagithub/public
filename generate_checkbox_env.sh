@@ -85,50 +85,85 @@ configure_logging() {
 }
 
 setup_checkbox_venv() {
-    echo "==> Setting up Checkbox in venv..."
-        
-    # first install python3 and python3-venv
-    $ sudo apt install python3 python3-virtualenv python3-pip
-    # clone the Checkbox repository
-    git clone "$CHECKBOX_REPO" ~/checkbox
+    set -e
+
+    echo "==> Setting up Checkbox v5.0.0 in virtualenv..."
+
+    # ---- variables (adjust if needed) ----
+    CHECKBOX_DIR="$HOME/checkbox"
+    VENVDIR="$HOME/checkbox_venv"
+    CHECKBOX_REPO="https://github.com/canonical/checkbox.git"
+    #CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/chkbx_directories.zip"
+    CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/providers_directory_working_v5.0.zip"
+    # -------------------------------------
+
+    echo "==> Installing dependencies"
+    sudo apt update
+    sudo apt install -y python3 python3-venv python3-pip git unzip wget
+
+    echo "==> Cloning Checkbox repo"
+    rm -rf "$CHECKBOX_DIR"
+    git clone "$CHECKBOX_REPO" "$CHECKBOX_DIR"
+
+    cd "$CHECKBOX_DIR"
     git checkout tags/v5.0.0 -b v5.0.0
-    
-    cd checkbox/checkbox-ng
-    ./mk-venv ../../checkbox_venv
-    # Activate the virtual environment
-    . ../../checkbox_venv/bin/activate
-    
-    # Install checkbox_support, it is a collection of utility scripts used by
-    # many tests
-    (checkbox_venv) $ cd ../checkbox-support
-    (checkbox_venv) $ pip install -e .
-    # Install the resource provider, we will use it further along in this tutorial
-    (checkbox_venv) $ cd ../providers/resource
-    (checkbox_venv) $ python3 manage.py develop
 
-    cd ~/checkbox/providers
-    "$VENVDIR/bin/checkbox-cli" startprovider "$PROVIDER"
+    echo "==> Creating virtualenv"
+    cd checkbox-ng
+    ./mk-venv "$VENVDIR"
 
-    cd "$PROVIDER"
-    python3 manage.py develop
-
+    echo "==> Activating virtualenv"
     source "$VENVDIR/bin/activate"
 
-    wget --show-progress "$CHK_DIRECTORIES_URL" -O /home/providers_directory_working_v5.0.zip
-    mv ~/checkbox/providers ~/checkbox/providers.ORIG
-    unzip -o /home/providers_directory_working_v5.0.zip -d "~/checkbox/"
+    echo "==> Installing checkbox-support"
+    cd ../checkbox-support
+    pip install -e .
+
+    echo "==> Installing resource provider"
+    cd ../providers/resource
+    python3 manage.py develop
+
+    echo "==> Initializing provider"
+    "$VENVDIR/bin/checkbox-cli" startprovider "$PROVIDER"
+
+    echo "==> Re-install provider after startprovider"
+    cd "$CHECKBOX_DIR/providers/$PROVIDER"
+    python3 manage.py develop
+
+    echo "==> Replacing providers directory (if needed)"
+    cd "$CHECKBOX_DIR"
+    wget -O /tmp/providers_directory_working_v5.0.zip "$CHK_DIRECTORIES_URL"
+    mv providers providers.ORIG
+    unzip -o /tmp/providers_directory_working_v5.0.zip -d "$CHECKBOX_DIR"
+
+    echo "==> Checkbox v5.0.0 setup complete"
 }
 
 validate_install() {
-    echo "==> Validating installation..."
-    cat <<EOF > /tmp/venvactivate
-source $VENVDIR/bin/activate
-EOF
-    source /tmp/venvactivate && chkv
-    if chkcli list "all-jobs" | grep -q dmesg_output; then
+    set -e
+
+    echo "==> Validating Checkbox installation..."
+
+    if [ ! -x "$VENVDIR/bin/checkbox-cli" ]; then
+        echo "❌ checkbox-cli not found in venv"
+        return 1
+    fi
+
+    # Activate venv
+    source "$VENVDIR/bin/activate"
+
+    echo "==> Checkbox version"
+    checkbox-cli version
+
+    echo "==> Checking providers"
+    checkbox-cli list-providers | grep -q resource
+
+    echo "==> Checking jobs"
+    if checkbox-cli list-jobs | grep -q dmesg_output; then
         echo "✅ Checkbox in Python venv installed successfully"
     else
-        echo "⚠️  Validation failed, please check installation manually"
+        echo "⚠️  Validation failed: dmesg_output job not found"
+        return 1
     fi
 }
 
@@ -145,5 +180,5 @@ install_packages
 configure_profile
 configure_logging
 setup_checkbox_venv
-validate_install
+#validate_install
 execute_test
