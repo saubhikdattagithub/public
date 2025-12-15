@@ -9,19 +9,13 @@ echo -e "=================================="
 DEBIAN_RELEASE="trixie"
 VENVDIR="$HOME/checkbox_venv"
 CHECKBOX_REPO="https://github.com/canonical/checkbox.git"
-#CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/chkbx_directories.zip"
 CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/providers_directory_working_v5.0.zip"
 NOW=$(date +%Y-%m-%dT%H.%M.%S)
+PROVIDER='1877.gardenlinux.certification:ccloud'
+REPORT_DIR='/home/checkbox_reports'
+mkdir -p $REPORT_DIR
 
 ### --- FUNCTIONS ---
-ask_provider() {
-    read -rp "Enter provider identifier [default: 1234.gardenlinux.certification:ccloud]: " input
-    echo -e "Eg. 2024.gardenlinux.certification"
-    PROVIDER="${input}:ccloud"
-    echo "==> Using provider: $PROVIDER"
-}
-
-
 configure_dns() {
     echo "==> Configuring DNS..."
     echo "nameserver 8.8.8.8" | tee /etc/resolv.conf >/dev/null
@@ -99,11 +93,11 @@ setup_checkbox_venv() {
     # -------------------------------------
 
     echo "==> Installing dependencies"
-    sudo apt update
-    sudo apt install -y python3 python3-venv python3-pip git unzip wget
+    sudo apt update -q
+    sudo apt install -yq --fix-missing git unzip wget
 
     echo "==> Cloning Checkbox repo"
-    rm -rf "$CHECKBOX_DIR"
+    rm -rf "$CHECKBOX_DIR" /root/checkbox*
     git clone "$CHECKBOX_REPO" "$CHECKBOX_DIR"
 
     cd "$CHECKBOX_DIR"
@@ -119,16 +113,12 @@ setup_checkbox_venv() {
     echo "==> Installing checkbox-support"
     cd ../checkbox-support
     pip install -e .
+    pip uninstall -y urwid
+    pip install "urwid<3"
+
 
     echo "==> Installing resource provider"
     cd ../providers/resource
-    python3 manage.py develop
-
-    echo "==> Initializing provider"
-    "$VENVDIR/bin/checkbox-cli" startprovider "$PROVIDER"
-
-    echo "==> Re-install provider after startprovider"
-    cd "$CHECKBOX_DIR/providers/$PROVIDER"
     python3 manage.py develop
 
     echo "==> Replacing providers directory (if needed)"
@@ -136,6 +126,11 @@ setup_checkbox_venv() {
     wget -O /tmp/providers_directory_working_v5.0.zip "$CHK_DIRECTORIES_URL"
     mv providers providers.ORIG
     unzip -o /tmp/providers_directory_working_v5.0.zip -d "$CHECKBOX_DIR"
+
+    echo "==> Re-install provider after startprovider"
+    cd "$CHECKBOX_DIR/providers/$PROVIDER"
+    python3 manage.py develop
+
 
     echo "==> Checkbox v5.0.0 setup complete"
 }
@@ -169,17 +164,30 @@ validate_install() {
 }
 
 execute_test() {
-    echo "==> Executing HW test Server Certification Full"
-    chkcli run -f html --non-interactive -o /var/tmp/checkbox-ng/sessions/submission_$NOW.html '1877.gardenlinux.certification::22.04-server-full'
+    set -e
+
+    NOW="$(date +%Y%m%d_%H%M%S)"
+    VENVDIR="$HOME/checkbox_venv"
+
+    echo "==> Executing HW test: Server Certification Full"
+
+    # Activate Checkbox virtualenv
+    source "$VENVDIR/bin/activate"
+
+    # Always use venv binary explicitly
+    "$VENVDIR/bin/checkbox-cli" run \
+        --non-interactive \
+        --output-format html \
+        --output-file "$REPORT_DIR/submission_${NOW}.html" \
+        '1877.gardenlinux.certification::22.04-server-full'
 }
 
 ### --- MAIN EXECUTION FLOW ---
-ask_provider
 configure_dns
 configure_sources
 install_packages
 configure_profile
+source ~/.profile
 configure_logging
 setup_checkbox_venv
-#validate_install
 execute_test
