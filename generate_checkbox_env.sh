@@ -170,7 +170,7 @@ validate_install() {
 
 execute_test() {
     echo "==> Executing HW test Server Certification Full"
-    chkcli run -f html --non-interactive -o /home/submission_$NOW.html '1877.gardenlinux.certification::22.04-server-full'
+    chkcli run -f html --non-interactive -o /var/tmp/checkbox-ng/sessions/submission_$NOW.html '1877.gardenlinux.certification::22.04-server-full'
 }
 
 ### --- MAIN EXECUTION FLOW ---
