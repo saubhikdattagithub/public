@@ -11,6 +11,7 @@ VENVDIR="$HOME/checkbox_venv"
 CHECKBOX_REPO="https://github.com/canonical/checkbox.git"
 #CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/chkbx_directories.zip"
 CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/providers_directory_working_v5.0.zip"
+NOW=$(date +%Y-%m-%dT%H.%M.%S)
 
 ### --- FUNCTIONS ---
 ask_provider() {
@@ -169,7 +170,7 @@ validate_install() {
 
 execute_test() {
     echo "==> Executing HW test Server Certification Full"
-    chkcli run -f html --non-interactive -o /home/1.html '1877.gardenlinux.certification::22.04-server-full'
+    chkcli run -f html --non-interactive -o /home/submission_$NOW.html '1877.gardenlinux.certification::22.04-server-full'
 }
 
 ### --- MAIN EXECUTION FLOW ---
