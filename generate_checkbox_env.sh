@@ -9,7 +9,8 @@ echo -e "=================================="
 DEBIAN_RELEASE="trixie"
 VENVDIR="$HOME/checkbox_venv"
 CHECKBOX_REPO="https://github.com/canonical/checkbox.git"
-CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/chkbx_directories.zip"
+#CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/chkbx_directories.zip"
+CHK_DIRECTORIES_URL="https://raw.githubusercontent.com/saubhikdattagithub/public/main/providers_directory_working_v5.0.zip"
 
 ### --- FUNCTIONS ---
 ask_provider() {
