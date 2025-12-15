@@ -114,8 +114,9 @@ setup_checkbox_venv() {
 
     source "$VENVDIR/bin/activate"
 
-    wget --show-progress "$CHK_DIRECTORIES_URL" -O /home/chbx_directories.zip
-    unzip -o /home/chbx_directories.zip -d "~/checkbox/providers/$PROVIDER"
+    wget --show-progress "$CHK_DIRECTORIES_URL" -O /home/providers_directory_working_v5.0.zip
+    mv ~/checkbox/providers ~/checkbox/providers.ORIG
+    unzip -o /home/providers_directory_working_v5.0.zip -d "~/checkbox/"
 }
 
 validate_install() {
