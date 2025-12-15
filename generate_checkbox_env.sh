@@ -5,7 +5,8 @@ echo -e "=================================="
 echo -e "**Welcome to checkbox initiation**"
 echo -e "=================================="
 
-### --- CONFIGURATION ---
+### --- CONFIGURATION ---]
+: "${HOME:=/root}"
 DEBIAN_RELEASE="trixie"
 VENVDIR="$HOME/checkbox_venv"
 CHECKBOX_REPO="https://github.com/canonical/checkbox.git"
